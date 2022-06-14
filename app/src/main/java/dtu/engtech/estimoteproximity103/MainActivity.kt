@@ -145,6 +145,7 @@ fun BeaconListView(zoneInfo: List<BeaconInfo>) {
     }
 }
 
+
 @Composable
 fun BeaconCard(beaconInfo: BeaconInfo) {
     Column() {
@@ -163,6 +164,5 @@ fun BeaconCard(beaconInfo: BeaconInfo) {
 @Composable
 fun DefaultPreview() {
     EstimoteProximity103Theme {
-
     }
 }
