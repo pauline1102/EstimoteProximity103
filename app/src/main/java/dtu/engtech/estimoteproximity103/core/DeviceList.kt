@@ -1,4 +1,4 @@
-package dtu.engtech.estimoteproximity103
+package dtu.engtech.estimoteproximity103.core
 
 object DeviceList {
     val deviceNames = mapOf("e27521f01a287a73e2c2fd2a65d26010" to "519",

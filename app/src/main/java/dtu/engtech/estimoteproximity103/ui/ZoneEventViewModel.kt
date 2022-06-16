@@ -1,4 +1,4 @@
-package dtu.engtech.estimoteproximity103
+package dtu.engtech.estimoteproximity103.ui
 
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.estimote.proximity_sdk.api.ProximityZoneContext
+import dtu.engtech.estimoteproximity103.model.BeaconInfo
 
 private const val TAG = "PROXIMITY"
 
