@@ -21,6 +21,7 @@ import dtu.engtech.estimoteproximity103.core.CloudCredentials.APP_TOKEN
 import dtu.engtech.estimoteproximity103.core.FirestoreBeaconConstants
 import dtu.engtech.estimoteproximity103.ui.BeaconListView
 import dtu.engtech.estimoteproximity103.ui.ZoneEventViewModel
+import dtu.engtech.estimoteproximity103.ui.receiverLocation
 import dtu.engtech.estimoteproximity103.ui.theme.EstimoteProximity103Theme
 
 private const val TAG = "PROXIMITY"
@@ -50,11 +51,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                    BeaconListView(zoneEventViewModel.zoneInfo)
-                   //testFirestoreGet()
                 }
             }
         }
-        //testUpdateEquipmentLocation()
 
         // Requirements check
         RequirementsWizardFactory.createEstimoteRequirementsWizard().fulfillRequirements(
@@ -96,7 +95,7 @@ class MainActivity : ComponentActivity() {
                 Log.d(TAG, "Enter: ${it.tag}")
                 //testUpdateEquipmentLocation()
                 updateEquipmentLocation(it.tag)
-                Log.d(it.tag, "It-tag")
+                Log.d(it.tag, "IT-tag")
                 //Skriv til Firebase
             }
             .onExit {
@@ -132,6 +131,7 @@ class MainActivity : ComponentActivity() {
             .addOnFailureListener { e -> Log.d(TAG, "Error updating document", e) }
 
     }
+
     private fun updateEquipmentLocation(tag: String) {
         val docRef = FirebaseFirestore.getInstance().collection(FirestoreBeaconConstants.EQUIPMENT)
         docRef.whereEqualTo(FirestoreBeaconConstants.ZONETAG, tag)
@@ -143,7 +143,8 @@ class MainActivity : ComponentActivity() {
 
                     //update
                     docRef.document(document.id)
-                        .update(FirestoreBeaconConstants.LOCATION, FirestoreBeaconConstants.RECEIVERLOCATION)
+                        .update(FirestoreBeaconConstants.LOCATION, receiverLocation)
+                       // .update(FirestoreBeaconConstants.LOCATION, FirestoreBeaconConstants.RECEIVERLOCATION)
                         .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
                         .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
                 }
@@ -152,19 +153,6 @@ class MainActivity : ComponentActivity() {
                 Log.w(FirestoreBeaconConstants.FIREBASELOGTAG, "Error getting documents: ", exception)
             }
     }
-  /*  private fun testFirestoreGet() {
-        val docRef = FirebaseFirestore.getInstance().collection("equipment")
-        docRef.get()
-            .addOnSuccessListener { documents ->
-                for (document in documents){
-                    Log.d(FirestoreBeaconConstants.FIREBASELOGTAG,"${document.id} => ${document.data}")
-                    Log.d(FirestoreBeaconConstants.FIREBASELOGTAG, "Henter noget")
-                }
-            }
-            .addOnFailureListener{exception ->
-                Log.w(FirestoreBeaconConstants.FIREBASELOGTAG,"Error getting documents: ", exception)
-            }
-    }*/
 }
 
 

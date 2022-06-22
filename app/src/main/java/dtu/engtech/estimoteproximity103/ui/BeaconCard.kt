@@ -1,5 +1,6 @@
 package dtu.engtech.estimoteproximity103.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -16,7 +17,7 @@ fun BeaconCard(beaconInfo: BeaconInfo) {
     Column() {
        // Text(text = "Enhed: "+DeviceList.deviceNames[beaconInfo.deviceID.uppercase()] ?: "No device name")
        // Spacer(modifier = Modifier.height(4.dp))
-        Text(text = "Beacon tag " +beaconInfo.tag)
+        Text(text = "Beacon tag: " +beaconInfo.tag)
         Spacer(modifier = Modifier.height(4.dp))
         Text(text = "Udstyr: "+beaconInfo.attachments[AttachmentKeys.DESCRIPTION.key] ?: "No description")
         Spacer(modifier = Modifier.height(16.dp))
